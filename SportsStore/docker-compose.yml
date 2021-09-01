@@ -1,0 +1,17 @@
+version: "3"
+services:
+  sportsstore:
+#    container_name: "asp-sportsstore"
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    depends_on:
+      - sqlserver
+  sqlserver:
+#    container_name: "asp-sportsstore-mssqlserver"
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "Passw0rd%"
+      ACCEPT_EULA: "Y"
